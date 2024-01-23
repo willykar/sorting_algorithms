@@ -4,6 +4,17 @@
 #include <stddef.h>
 
 /**
+ * enum bool - Struct enumeration of Boolean values
+ * @false: Equals 0.
+ * @true: Equals 1.
+ */
+typedef enum bool
+{
+	false = 0,
+	true
+} bool;
+
+/**
  * struct listint_s - Doubly linked list node
  *
  * @n: Integer stored in the node
@@ -24,5 +35,6 @@ void insertion_sort_list(listint_t **list);
 void selection_sort(int *array, size_t size);
 void quick_sort(int *array, size_t size);
 void shell_sort(int *array, size_t size);
+void cocktail_sort_list(listint_t **list);
 
 #endif /* sort.h */
