@@ -1,19 +1,4 @@
 #include "sort.h"
-
-/**
- * swap_int - A function that swaps two integers in an array
- * @j: The first integer to be swapped
- * @k: The second integer to be swapped
- */
-void swap_int(int *j, int *k)
-{
-	int tmp;
-
-	tmp = *j;
-	*j = *k;
-	*k = tmp;
-}
-
 /**
  * bubble_sort - A finction that sorts an array of integers
  * in ascending order using Bubble sort
