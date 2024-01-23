@@ -3,9 +3,9 @@
 void swap_int(int *k, int *l);
 
 /**
- * swaps_int - A function that swaps two integers in an array
- * @k: The first integer to be swapped
- * @l: The second integer to be swapped
+ * swap_ints - A function that swaps two integers in an array
+ * @a: The first integer to be swapped
+ * @b: The second integer to be swapped
  */
 void swap_ints(int *a, int *b)
 {
