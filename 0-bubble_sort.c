@@ -1,6 +1,20 @@
 #include "sort.h"
 
 /**
+ * swap_int - A function that swaps two integers in an array
+ * @j: The first integer to be swapped
+ * @k: The second integer to be swapped
+ */
+void swap_int(int *j, int *k)
+{
+	int tmp;
+
+	tmp = *j;
+	*j = *k;
+	*k = tmp;
+}
+
+/**
  * bubble_sort - A finction that sorts an array of integers
  * in ascending order using Bubble sort
  * @array: Array to sort
@@ -8,28 +22,25 @@
  */
 void bubble_sort(int *array, size_t size)
 {
-	size_t a = 0, b = size;
-	int tmp, sorted;
+	int swap, swapped_p;
+	size_t a;
 
-	if (array == NULL)
+	if (array == NULL || size < 2)
 		return;
-	for (b = size; b > 0; b--)
+
+	while (swapped_p)
 	{
-		sorted = 0;
+		swapped_p = 0;
 		for (a = 0; a < size - 1; a++)
 		{
 			if (array[a] > array[a + 1])
 			{
-				tmp = array[a];
-				array[i] = array[a + 1];
-				array[a + 1] = tmp;
+				swapped_p = 1;
+				swap = array[a + 1];
+				array[a + 1] = array[a];
+				array[a] = swap;
 				print_array(array, size);
-				sorted = 1;
 			}
-		}
-		if (sorted == 0)
-		{
-			break;
 		}
 	}
 }
