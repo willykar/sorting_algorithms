@@ -5,29 +5,31 @@
  *  in ascending order using Bubble sort
  *  array: Array to sort
  *  size: The size of the array
- *  Return: 0
  */
 void bubble_sort(int *array, size_t size)
 {
-	int swapped, temp;
-	size_t i;
+	size_t a = 0, b = size;
+	int tmp, sorted;
 
-	if (array == NULL || size < 2)
+	if (array == NULL)
 		return;
-	while (swapped)
+	for (b = size; b > 0; b--)
 	{
-		swapped = 0;
-
-		for(i = 0; i < size; i++)
+		sorted = 0;
+		for (a = 0; a < size - 1; a++)
 		{
-			if(array[i] > array[i + 1])
+			if (array[a] > array[a + 1])
 			{
-				swapped = 1;
-				temp = array[i + 1];
-				array[i + 1] = array[i];
-				array[i] = temp;
+				tmp = array[a];
+				array[i] = array[a + 1];
+				array[a + 1] = tmp;
 				print_array(array, size);
+				sorted = 1;
 			}
+		}
+		if (sorted == 0)
+		{
+			break;
 		}
 	}
 }
