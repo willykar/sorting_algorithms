@@ -1,6 +1,6 @@
 #include "sort.h"
 
-/*
+/**
  * bubble_sort - A finction that sorts an array of integers
  * in ascending order using Bubble sort
  * @array: Array to sort
