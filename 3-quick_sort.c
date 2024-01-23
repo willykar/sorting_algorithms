@@ -8,6 +8,7 @@
  * @low: first index opf the list
  * @high: last index of the list
  * @size: The size of the array
+ *  Return: result after divide
  */
 
 size_t partition_divide(int *array, ssize_t low, ssize_t high, size_t size)
