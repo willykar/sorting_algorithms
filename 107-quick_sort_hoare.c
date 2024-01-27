@@ -1,53 +1,80 @@
 #include "sort.h"
 #include <sys/types.h>
 
-/**
- * partition - A function that divides the array and
- * swap data and partitions.
- * @array: An array to be sorted in a partition argorithm
- * @low: The first index of the array
- * @high: The last index of the array
- * @size: The size of the array
- */
-size_t partition(int *array, ssize_t low, ssize_t high, size_t size)
-{
-	int pivot_pi = array[low], swap_i;
-	ssize_t a = low - 1, b = high + 1;
 
-	while (1)
-	{
-		do {
-			a++;
-		} while (array[a] < pivot_pi);
-		do {
-			b--;
-		} while (array[b] > pivot_pi);
-		if (a >= b)
-			return (b);
-		swap_i = array[b];
-		array[b] = array[a];
-		array[a] = swap_i;
-		print_array(array, size);
-	}
+#include "sort.h"
+
+void swap_ints(int *a, int *b);
+int hoare_partition(int *array, size_t size, int left, int right);
+void hoare_sort(int *array, size_t size, int left, int right);
+void quick_sort_hoare(int *array, size_t size);
+
+/**
+ * swap_ints - iA function that swaps two integers in an array
+ * @a: The first integer to swap
+ * @b: The second integer to swap
+ */
+void swap_ints(int *a, int *b)
+{
+	int tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
 
 /**
- * quicksort - A function that divides the array to
- * perform the sorting in quicksort
+ * hoare_partition - Order a subset of an array of integers
+ * according to the hoare partition scheme.
+ * @array: The array of integers
+ * @size: The size of the array
+ * @left: The starting index of the subset to order
+ * @right: The ending index of the subset to order
+ * Return: The final partition index
+ */
+int hoare_partition(int *array, size_t size, int left, int right)
+{
+	int pivot_i, above, below;
+
+	pivot_i = array[right];
+	above = left - 1;
+	below = right + 1;
+
+	while (1)
+	{
+		while (array[++above] < pivot_i)
+			;
+		while (array[--below] > pivot_i)
+			;
+
+		if (above >= below)
+			break;
+
+		swap_ints(array + above, array + below);
+		print_array(array, size);
+
+	}
+	return (above);
+}
+
+
+
+/**
+ * hoare_sort - A function that implements quicksort algorithm
  * @array: The array to be sorted in quicksort algorthm
- * @low: The first index of the array
- * @high: The last index of the array
+ * @left: The starting index
+ * @right: The ending index
  * @size: The size of the array
  */
-void quicksort(int *array, ssize_t low, ssize_t high, size_t size)
+void hoare_sort(int *array, size_t size, int left, int right)
 {
-	ssize_t b;
+	int part_i;
 
-	if (low < high)
+	if (right - left > 0)
 	{
-		b = partition(array, low, high, size);
-		quicksort(array, low, b, size);
-		quicksort(array, b + 1, high, size);
+		part_i = hoare_partition(array, size, left, right);
+		hoare_sort(array, size, left, part_i - 1);
+		hoare_sort(array, size, part_i, right);
 	}
 }
 
@@ -62,5 +89,5 @@ void quick_sort_hoare(int *array, size_t size)
 	if (array == NULL || size < 2)
 		return;
 
-	quicksort(array, 0, size - 1, size);
+	hoare_sort(array, 0, size - 1, size);
 }
