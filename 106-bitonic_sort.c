@@ -21,7 +21,7 @@ void swap_ints(int *a, int *b)
 }
 
 /**
- * bitonic_merge - A function that sorts a bitonic 
+ * bitonic_merge - A function that sorts a bitonic
  * sequence inside an array of integers
  * @array: An array of integers
  * @size: The size of the array
